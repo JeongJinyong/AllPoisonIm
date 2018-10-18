@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">다독임</string>
+    <string name="item_home">홈</string>
+    <string name="item_books">추천서적</string>
+    <string name="item_my_page">마이페이지</string>
 </resources>

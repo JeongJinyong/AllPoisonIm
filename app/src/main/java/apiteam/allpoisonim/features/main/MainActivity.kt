@@ -1,7 +1,8 @@
-package apiteam.allpoisonim
+package apiteam.allpoisonim.features.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import apiteam.allpoisonim.R
 
 class MainActivity : AppCompatActivity() {
 
