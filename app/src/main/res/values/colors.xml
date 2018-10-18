@@ -10,4 +10,7 @@
     <color name="black_313131">#313131</color>
     <color name="white_f4f4f4">#f4f4f4</color>
     <color name="orange_f79f47">#f79f47</color>
+    <color name="bg_bottom_navi">#1c1c1c</color>
+    <color name="bottom_navi_checked">#a2c6ff</color>
+    <color name="white">#ffffff</color>
 </resources>

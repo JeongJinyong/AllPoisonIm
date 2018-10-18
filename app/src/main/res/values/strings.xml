@@ -23,4 +23,8 @@
     <string name="error_signin_id_valid">아이디가 이메일 형식이 아닙니다.</string>
 
     <string name="error_signup_pwok">비밀번호가 다릅니다.</string>
+
+    <string name="item_home">홈</string>
+    <string name="item_books">추천서적</string>
+    <string name="item_my_page">마이페이지</string>
 </resources>
