@@ -4,18 +4,18 @@
     <item
         android:id="@+id/item_home"
         android:enabled="true"
-        android:icon="@android:drawable/ic_dialog_info"
+        android:icon="@drawable/ic_home"
         android:title="@string/item_home"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/item_books"
-        android:icon="@android:drawable/ic_dialog_info"
+        android:icon="@drawable/ic_book"
         android:title="@string/item_books"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/item_my_page"
         android:enabled="true"
-        android:icon="@android:drawable/ic_dialog_info"
+        android:icon="@drawable/ic_mypage"
         android:title="@string/item_my_page"
         app:showAsAction="ifRoom" />
 </menu>
