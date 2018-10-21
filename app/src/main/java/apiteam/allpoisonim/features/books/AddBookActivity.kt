@@ -3,6 +3,7 @@ package apiteam.allpoisonim.features.books
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.res.ResourcesCompat
+import android.telecom.Call
 import android.view.View
 import android.widget.ToggleButton
 import apiteam.allpoisonim.R
@@ -27,6 +28,7 @@ class AddBookActivity : AppCompatActivity() {
     }
 
     private fun initUi() {
+        // 토글버튼들 그룹화
         toggleList = listOf(btn_type_all, btn_type_angry, btn_type_boring,
                 btn_type_break, btn_type_depressed, btn_type_exhausting,
                 btn_type_insomnia, btn_type_knowledge, btn_type_leaving_company,
@@ -37,6 +39,8 @@ class AddBookActivity : AppCompatActivity() {
         for (toggleButton in toggleList) {
             toggleButton.setOnClickListener(typeListener)
         }
+
+        btn_close.setOnClickListener { finish() }
     }
 
     private fun clearToggle(button: ToggleButton) {
@@ -51,5 +55,10 @@ class AddBookActivity : AppCompatActivity() {
         button.setTextColor(resources.getColor(R.color.white, theme))
         button.typeface = ResourcesCompat.getFont(this, R.font.noto_bold)
         tv_book_reco_type.text = button.text
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.slide_no_move, R.anim.slide_down_activity)
     }
 }

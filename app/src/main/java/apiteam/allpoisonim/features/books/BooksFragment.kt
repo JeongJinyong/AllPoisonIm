@@ -1,6 +1,7 @@
 package apiteam.allpoisonim.features.books
 
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -25,8 +26,12 @@ class BooksFragment : Fragment() {
 
     private fun initUi() {
         btn_add_book.setOnClickListener {
+            val option =
+                    ActivityOptions.makeCustomAnimation(context,
+                            R.anim.slide_up_activity, R.anim.slide_no_move)
             val intent = Intent(context, AddBookActivity::class.java)
-            startActivity(intent)
+            startActivity(intent, option.toBundle())
+
         }
     }
 }
