@@ -16,7 +16,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -70,12 +69,13 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/noto_medium"
-                        android:text="김프만님의\n추천 독립서적은?"
+                        android:text="@string/add_book_title"
                         android:textColor="@color/white"
                         android:textSize="24sp" />
 
@@ -97,7 +97,7 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/btn_add_photo"
+                        android:id="@+id/iv_book"
                         android:layout_width="104dp"
                         android:layout_height="144dp"
                         android:background="@drawable/shape_rect_black_bg_white_stroke"
@@ -105,13 +105,14 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
+                        android:id="@+id/btn_add_photo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_camera"
-                        app:layout_constraintBottom_toBottomOf="@id/btn_add_photo"
-                        app:layout_constraintEnd_toEndOf="@id/btn_add_photo"
-                        app:layout_constraintStart_toStartOf="@id/btn_add_photo"
-                        app:layout_constraintTop_toTopOf="@id/btn_add_photo" />
+                        app:layout_constraintBottom_toBottomOf="@id/iv_book"
+                        app:layout_constraintEnd_toEndOf="@id/iv_book"
+                        app:layout_constraintStart_toStartOf="@id/iv_book"
+                        app:layout_constraintTop_toTopOf="@id/iv_book" />
 
                 </android.support.constraint.ConstraintLayout>
 
@@ -133,24 +134,28 @@
                     android:orientation="vertical">
 
                     <apiteam.allpoisonim.features.books.BookEditText
+                        android:id="@+id/et_book_name"
                         android:layout_width="match_parent"
                         android:layout_height="54dp"
                         app:hint="도서명"
                         app:isSearch="true" />
 
                     <apiteam.allpoisonim.features.books.BookEditText
+                        android:id="@+id/et_book_author"
                         android:layout_width="match_parent"
                         android:layout_height="54dp"
                         android:layout_marginTop="16dp"
                         app:hint="저자" />
 
                     <apiteam.allpoisonim.features.books.BookEditText
+                        android:id="@+id/et_book_publisher"
                         android:layout_width="match_parent"
                         android:layout_height="54dp"
                         android:layout_marginTop="16dp"
                         app:hint="출판사" />
 
                     <apiteam.allpoisonim.features.books.BookEditText
+                        android:id="@+id/et_book_issued_year"
                         android:layout_width="match_parent"
                         android:layout_height="54dp"
                         android:layout_marginTop="16dp"
@@ -205,6 +210,7 @@
                     </LinearLayout>
 
                     <apiteam.allpoisonim.features.books.BookEditText
+                        android:id="@+id/et_book_reason"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
                         android:layout_marginTop="12dp"
@@ -284,6 +290,7 @@
                             android:orientation="horizontal">
 
                             <ToggleButton
+                                android:id="@+id/btn_type_all"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -297,6 +304,7 @@
                                 android:textSize="13sp" />
 
                             <ToggleButton
+                                android:id="@+id/btn_type_whitout_thinking"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -311,6 +319,7 @@
                                 android:textSize="13sp" />
 
                             <ToggleButton
+                                android:id="@+id/btn_type_depressed"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -333,6 +342,7 @@
                             android:orientation="horizontal">
 
                             <ToggleButton
+                                android:id="@+id/btn_type_loving"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -346,6 +356,7 @@
                                 android:textSize="13sp" />
 
                             <ToggleButton
+                                android:id="@+id/btn_type_break"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -360,6 +371,7 @@
                                 android:textSize="13sp" />
 
                             <ToggleButton
+                                android:id="@+id/btn_type_not_emotional"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -382,6 +394,7 @@
                             android:orientation="horizontal">
 
                             <ToggleButton
+                                android:id="@+id/btn_type_need_laugh"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -395,6 +408,7 @@
                                 android:textSize="13sp" />
 
                             <ToggleButton
+                                android:id="@+id/btn_type_lonely"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -409,6 +423,7 @@
                                 android:textSize="13sp" />
 
                             <ToggleButton
+                                android:id="@+id/btn_type_knowledge"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -431,6 +446,7 @@
                             android:orientation="horizontal">
 
                             <ToggleButton
+                                android:id="@+id/btn_type_insomnia"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -444,6 +460,7 @@
                                 android:textSize="13sp" />
 
                             <ToggleButton
+                                android:id="@+id/btn_type_want_trip"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -458,6 +475,7 @@
                                 android:textSize="13sp" />
 
                             <ToggleButton
+                                android:id="@+id/btn_type_leaving_company"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -480,6 +498,7 @@
                             android:orientation="horizontal">
 
                             <ToggleButton
+                                android:id="@+id/btn_type_miss"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -493,6 +512,7 @@
                                 android:textSize="13sp" />
 
                             <ToggleButton
+                                android:id="@+id/btn_type_angry"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -507,6 +527,7 @@
                                 android:textSize="13sp" />
 
                             <ToggleButton
+                                android:id="@+id/btn_type_no_text"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -529,6 +550,7 @@
                             android:orientation="horizontal">
 
                             <ToggleButton
+                                android:id="@+id/btn_type_like_photo"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -542,6 +564,7 @@
                                 android:textSize="13sp" />
 
                             <ToggleButton
+                                android:id="@+id/btn_type_boring"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -556,6 +579,7 @@
                                 android:textSize="13sp" />
 
                             <ToggleButton
+                                android:id="@+id/btn_type_exhausting"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
