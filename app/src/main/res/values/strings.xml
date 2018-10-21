@@ -6,4 +6,5 @@
     <string name="add_book_desc_2">서적 검색 결과가 없는 경우\n직접 서적의 표지를 찍어 업로드\n해주세요!</string>
     <string name="book_reco_reason">이 책을 추천하는 이유</string>
     <string name="hint_reco_reason">추천이유를 남겨주세요.</string>
+    <string name="add_book_title">%s님의\n 추천 독립서적은?</string>
 </resources>
