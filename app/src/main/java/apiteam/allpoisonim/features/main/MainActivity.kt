@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initUi() {
         val fragments = listOf(HomeFragment(), BooksFragment(), MyPageFragment())
+
         vp_main.adapter = MainPagerAdapter(fragments, supportFragmentManager)
         vp_main.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {}
