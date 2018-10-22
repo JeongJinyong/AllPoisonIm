@@ -47,7 +47,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:hint="@string/nick"
+        android:nextFocusDown="@+id/signup_edit_email"
         android:paddingStart="23dp"
+        android:singleLine="true"
         android:theme="@style/AppTheme.LighterEditText"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -114,19 +116,28 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_edit_pw" />
 
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/signup_edit_pwok"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/signup_textinput_pwok"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="@string/password_ok"
-        android:inputType="textPassword"
-        android:paddingStart="23dp"
-        android:theme="@style/AppTheme.LighterEditText"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/MyErrorText"
+        app:hintEnabled="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup_text_pwok" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_text_pwok">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/signup_edit_pwok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password_ok"
+            android:inputType="textPassword"
+            android:paddingStart="23dp"
+            android:theme="@style/AppTheme.LighterEditText" />
+    </android.support.design.widget.TextInputLayout>
 
 
     <android.support.v7.widget.AppCompatButton
@@ -136,14 +147,14 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/btn_signin_drawable"
         android:text="@string/together"
         android:textColor="@color/white_f4f4f4"
         android:textSize="16sp"
-        android:background="@drawable/btn_signin_drawable"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signup_edit_pwok"
+        app:layout_constraintTop_toBottomOf="@id/signup_textinput_pwok"
         app:layout_constraintVertical_bias="0" />
 
 </android.support.constraint.ConstraintLayout>

@@ -8,12 +8,10 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
-
         supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.signup_fragment, SignUpFragment())
                 .commit()
-
     }
 
     fun signUpComplete() {

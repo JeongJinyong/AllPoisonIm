@@ -19,4 +19,13 @@
         <item name="android:textCursorDrawable">@color/gray_b1b1b1</item>
     </style>
 
+    <style name="MyErrorText" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/orange_f79f47</item>
+    </style>
+
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/sky_6ca5ff</item>
+        <item name="colorControlActivated">@color/orange_f79f47</item>
+    </style>
+
 </resources>
