@@ -1,23 +1,367 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/status_bar"
     tools:context=".features.books.BooksFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="추천 서적 프레그먼트" />
-
-    <Button
+    <LinearLayout
         android:id="@+id/btn_add_book"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:background="@color/white"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_book_blue" />
+
+        <TextView
+            android:id="@+id/tv_add_book"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/noto_medium"
+            android:text="%s 님의\n추천 독립서적 리뷰를 남겨주세요!"
+            android:textColor="@color/black_1c1c1c"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_more" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey_c3c3c3"
+        app:layout_constraintTop_toBottomOf="@id/btn_add_book" />
+
+    <HorizontalScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="9dp"
+        android:background="@color/white"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/btn_add_book">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ToggleButton
+                android:id="@+id/btn_type_all"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="49dp"
+                android:layout_height="36dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="모든"
+                android:textOn="모든"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_whitout_thinking"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="아무 생각 없는"
+                android:textOn="아무 생각 없는"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_depressed"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="우울해 하는"
+                android:textOn="우울해 하는"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_loving"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="지금 사랑하고 있는"
+                android:textOn="지금 사랑하고 있는"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_break"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="이별한"
+                android:textOn="이별한"
+                android:textSize="13sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_not_emotional"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="감성이 매마른"
+                android:textOn="감성이 매마른"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_need_laugh"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="웃고 싶은"
+                android:textOn="웃고 싶은"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_lonely"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="외로움 타는"
+                android:textOn="외로움 타는"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_knowledge"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="지식충전이 필요한"
+                android:textOn="지식충전이 필요한"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_insomnia"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="잠이 안오는"
+                android:textOn="잠이 안오는"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_want_trip"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="떠나고 싶은"
+                android:textOn="떠나고 싶은"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_leaving_company"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="퇴사하고싶은"
+                android:textOn="퇴사하고싶은"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_miss"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="그리워하는"
+                android:textOn="그리워하는"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_angry"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="화가 많은"
+                android:textOn="화가 많은"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_no_text"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="글 읽기를 싫어하는"
+                android:textOn="글 읽기를 싫어하는"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_like_photo"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="사진을 좋아하는"
+                android:textOn="사진을 좋아하는"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_boring"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="심심한"
+                android:textOn="심심한"
+                android:textSize="11sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_type_exhausting"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/selector_reco_category"
+                android:fontFamily="@font/noto_regular"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black_434343"
+                android:textOff="힘들고 지친"
+                android:textOn="힘들고 지친"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey_c3c3c3"
+        app:layout_constraintTop_toBottomOf="@id/scroll_view" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_book"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="9dp"
+        android:background="@color/status_bar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="추천 서적 추가"/>
+        app:layout_constraintTop_toBottomOf="@id/scroll_view" />
 
 </android.support.constraint.ConstraintLayout>
