@@ -57,6 +57,13 @@ class BooksFragment : Fragment() {
         for (toggleButton in toggleList) {
             toggleButton.setOnClickListener(typeListener)
         }
+
+        val temp = listOf(1, 2, 3, 4, 5)
+        context?.let {
+            val booksAdapter = BooksAdapter(it, temp)
+            rv_book.adapter = booksAdapter
+        }
+
     }
 
     private fun clearToggle(button: ToggleButton) {
