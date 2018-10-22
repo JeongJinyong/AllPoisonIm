@@ -22,4 +22,5 @@
     <color name="blue">#6ca5ff</color>
     <color name="grey_c3c3c3">#66c3c3c3</color>
     <color name="status_bar">#f3f3f3</color>
+    <color name="grey_909090">#909090</color>
 </resources>
