@@ -10,6 +10,7 @@ object BookStore {
         val storeLocation: String,
         val storePhoneNum: String,
         val storeSns: String,
+        val createdAt: String,
         val bookStoreImages: List<BookStoreImages>
     )
 
