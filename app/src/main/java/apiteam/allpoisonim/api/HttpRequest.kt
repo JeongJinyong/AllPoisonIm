@@ -16,7 +16,7 @@ interface HttpRequest {
             val retrofit = Retrofit.Builder()
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("https://en.wikipedia.org/w/")
+                    .baseUrl("")
                     .build()
 
             return retrofit.create(HttpRequest::class.java)
