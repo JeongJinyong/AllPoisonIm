@@ -1,11 +1,37 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.DetailView" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Hyperlink">
+        <item name="android:textColor">#434343</item>
+        <item name="android:background">@drawable/hyperlink_underline</item>
+    </style>
+
+    <style name="AppTheme.LighterEditText" parent="Widget.AppCompat.EditText">
+        <item name="colorControlNormal">@color/gray_b1b1b1</item>
+        <item name="colorControlActivated">@color/sky_6ca5ff</item>
+        <item name="colorControlHighlight">@color/sky_6ca5ff</item>
+        <item name="android:textCursorDrawable">@color/gray_b1b1b1</item>
+    </style>
+
+    <style name="MyErrorText" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/orange_f79f47</item>
+    </style>
+
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/sky_6ca5ff</item>
+        <item name="colorControlActivated">@color/orange_f79f47</item>
     </style>
 
 </resources>
