@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingTop="15.5dp"
+    android:paddingEnd="16dp">
+
+    <ImageView
+        android:id="@+id/iv_profile"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/image_profile_reply_default"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/noto_medium"
+        android:includeFontPadding="false"
+        android:text="차은우"
+        android:textColor="@color/black_1d1d1d"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_reply"
+        app:layout_constraintStart_toEndOf="@id/iv_profile"
+        app:layout_constraintTop_toTopOf="@id/iv_profile" />
+
+    <TextView
+        android:id="@+id/tv_reply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/noto_regular"
+        android:includeFontPadding="false"
+        android:text="읽어보고싶네요. 추천 감사합니다~!"
+        android:textColor="@color/black_434343"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_profile"
+        app:layout_constraintStart_toStartOf="@id/tv_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/white_f4f4f4"
+        app:layout_constraintTop_toBottomOf="@id/tv_reply" />
+
+</android.support.constraint.ConstraintLayout>
