@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:layout_width="216dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="196dp"
+        android:background="@drawable/bookstroe_bg_dot2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bookstore_type3_img" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/bookstore_type3_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
+        android:textColor="@color/black_1c1c1c"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="한 번 들으면 잊히지 않을 이름, 어서어서.\n어디에나 서점이 있지만,\n어디에도 없는 서점을 만들고 싶다는 의미가 담겨 있다." />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/bookstore_type3_img"
+        android:layout_width="0dp"
+        android:layout_height="320dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bookstore_type3_txt"
+        tools:src="@drawable/test1" />
+
+
+</android.support.constraint.ConstraintLayout>

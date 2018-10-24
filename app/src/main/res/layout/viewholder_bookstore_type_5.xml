@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="168dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bookstore_map"
+        app:srcCompat="@drawable/bookstroe_bg_book" />
+
+    <View
+        android:id="@+id/bookstore_map"
+        android:layout_width="296dp"
+        android:layout_height="196dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/bookstore_map_img"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bookstore_map"
+        app:srcCompat="@drawable/bookstore_map" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/bookstore_map_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="#c3c3c3"
+        android:textSize="12sp"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintLeft_toRightOf="@id/bookstore_map_img"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bookstore_map_img"
+        tools:text="별책부록\n서울 용산구 신흥로16길 7" />
+</android.support.constraint.ConstraintLayout>

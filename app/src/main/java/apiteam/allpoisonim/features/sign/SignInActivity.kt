@@ -31,7 +31,6 @@ class SignInActivity : AppCompatActivity(), TextWatcher {
                     "password" to pw
             )
             if (isEmailValid(email)) {
-                signin_btn.isEnabled = true
                 HttpRequest.create().signIn(map).subscribe({
                     startActivity(Intent(this@SignInActivity, MainActivity::class.java))
                 }, {

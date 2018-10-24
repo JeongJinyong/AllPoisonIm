@@ -15,14 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="apiteam.allpoisonim.features.sign.SignInActivity"/>
-        <activity android:name="apiteam.allpoisonim.features.sign.SignUpActivity" />
-        <activity android:name=".features.main.MainActivity">
+        <activity android:name="apiteam.allpoisonim.features.sign.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="apiteam.allpoisonim.features.sign.SignUpActivity" />
+        <activity android:name=".features.main.MainActivity">
         </activity>
         <activity android:name=".features.books.AddBookActivity" />
         <activity android:name=".features.books.BooksDetailActivity"></activity>
