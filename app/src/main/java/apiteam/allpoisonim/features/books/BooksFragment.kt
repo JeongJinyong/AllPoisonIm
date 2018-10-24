@@ -43,7 +43,6 @@ class BooksFragment : Fragment() {
                             R.anim.slide_up_activity, R.anim.slide_no_move)
             val intent = Intent(context, AddBookActivity::class.java)
             startActivity(intent, option.toBundle())
-
         }
 
         // 토글버튼들 그룹화
