@@ -1,4 +1,4 @@
-package apiteam.allpoisonim.main
+package apiteam.allpoisonim.features.main
 
 import android.os.Bundle
 import android.os.PersistableBundle

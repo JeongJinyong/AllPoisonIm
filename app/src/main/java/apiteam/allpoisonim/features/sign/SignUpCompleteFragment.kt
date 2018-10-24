@@ -1,4 +1,4 @@
-package apiteam.allpoisonim.sign
+package apiteam.allpoisonim.features.sign
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

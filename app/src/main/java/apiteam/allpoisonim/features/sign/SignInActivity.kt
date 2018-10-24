@@ -1,4 +1,4 @@
-package apiteam.allpoisonim.sign
+package apiteam.allpoisonim.features.sign
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,9 +6,10 @@ import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
-import apiteam.allpoisonim.MainActivity
+
 import apiteam.allpoisonim.R
 import apiteam.allpoisonim.api.HttpRequest
+import apiteam.allpoisonim.features.main.MainActivity
 import kotlinx.android.synthetic.main.activity_signin.*
 import java.util.regex.Pattern
 
