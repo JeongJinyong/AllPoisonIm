@@ -4,9 +4,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import apiteam.allpoisonim.R
 import kotlinx.android.synthetic.main.activity_books_detail.*
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.DividerItemDecoration
-
 
 
 class BooksDetailActivity : AppCompatActivity() {
