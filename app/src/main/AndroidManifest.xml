@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="apiteam.allpoisonim">
-    
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera"
+
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
 
     <application
@@ -14,18 +16,19 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name="apiteam.allpoisonim.features.sign.SignInActivity"/>
-        <activity android:name="apiteam.allpoisonim.features.sign.SignUpActivity" />
-        <activity android:name=".features.main.MainActivity">
+        <activity android:name=".features.sign.SignInActivity" />
+        <activity android:name=".features.sign.SignUpActivity" />
+        <activity android:name=".features.main.MainActivity" />
+        <activity android:name=".features.books.AddBookActivity" />
+        <activity android:name=".features.books.BooksDetailActivity" />
+        <activity android:name=".features.main.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".features.books.AddBookActivity" />
-        <activity android:name=".features.books.BooksDetailActivity"/>
     </application>
 
 </manifest>
