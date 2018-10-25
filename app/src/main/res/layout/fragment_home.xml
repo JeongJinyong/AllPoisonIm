@@ -29,10 +29,76 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:layout_width="192dp"
-        android:layout_height="200dp"
-        android:src="@drawable/bg_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="390dp"
+        android:src="@drawable/bg_bottom_main"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_pick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/shape_rect_blue_bg_14r"
+        android:fontFamily="@font/noto_medium"
+        android:includeFontPadding="false"
+        android:paddingStart="8dp"
+        android:paddingTop="3dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="3dp"
+        android:text="다독임 PICK!"
+        android:textColor="@color/black_1c1c1c"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/pb_page"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:progressDrawable="@drawable/store_progress"
+        app:layout_constraintTop_toBottomOf="@id/tv_pick" />
+
+    <TextView
+        android:id="@+id/tv_current_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/noto_bold"
+        android:text="2"
+        android:textColor="@color/black_1c1c1c"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/pb_page"
+        app:layout_constraintEnd_toStartOf="@id/tv_total_page" />
+
+    <TextView
+        android:id="@+id/tv_total_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/noto_regular"
+        android:text="/8"
+        android:textColor="@color/grey_b1b1b1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_current_page"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_current_page" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_store"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pb_page" />
 
 </android.support.constraint.ConstraintLayout>
