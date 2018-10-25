@@ -1,13 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".features.main.HomeFragment">
 
-    <TextView
+    <View
+        android:id="@+id/bg_top"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="추천 서점 프레그먼트" />
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintHeight_percent="0.21"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/black_1c1c1c"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bg_top" />
+
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="136dp"
+        android:src="@drawable/bg_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="192dp"
+        android:layout_height="200dp"
+        android:src="@drawable/bg_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
