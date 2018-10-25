@@ -1,6 +1,5 @@
 package apiteam.allpoisonim.features.sign
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.text.Editable
@@ -32,7 +31,7 @@ class SignUpFragment : Fragment(), TextWatcher {
                     "password" to pw,
                     "nickname" to nick
             )
-            HttpRequest.create().signIn(map).subscribe({
+            HttpRequest.create().signUp(map).subscribe({
                 if (activity is SignUpActivity) (activity as SignUpActivity).signUpComplete()
             }, {
                 Toast.makeText(activity, it.message, Toast.LENGTH_SHORT).show()

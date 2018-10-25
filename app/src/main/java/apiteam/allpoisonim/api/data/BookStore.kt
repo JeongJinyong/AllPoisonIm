@@ -7,6 +7,8 @@ object BookStore {
         val storeTheme: String,
         val storeTitle: String,
         val storeMainImage: String,
+        val openTime : String,
+        val weekendOpenTime : String,
         val storeLocation: String,
         val storePhoneNum: String,
         val storeSns: String,

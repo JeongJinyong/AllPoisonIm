@@ -2,8 +2,9 @@ package apiteam.allpoisonim.features.main
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import apiteam.allpoisonim.api.data.BookStore
 
-class BookStoreAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class BookStoreAdapter(val booksotre : BookStore) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
