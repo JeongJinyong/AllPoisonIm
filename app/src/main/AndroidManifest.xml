@@ -21,7 +21,9 @@
         <activity android:name=".features.sign.SignUpActivity" />
         <activity android:name=".features.main.MainActivity" />
         <activity android:name=".features.books.AddBookActivity" />
-        <activity android:name=".features.books.BooksDetailActivity" />
+        <activity android:name=".features.books.BooksDetailActivity"
+            android:theme="@style/AppTheme.DetailView"
+            android:fitsSystemWindows="true"/>
         <activity android:name=".features.main.BookStoreDetailActivity"/>
         <activity android:name=".features.main.SplashActivity">
             <intent-filter>

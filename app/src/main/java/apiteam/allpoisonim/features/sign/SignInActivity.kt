@@ -9,7 +9,10 @@ import android.widget.Toast
 
 import apiteam.allpoisonim.R
 import apiteam.allpoisonim.api.HttpRequest
+import apiteam.allpoisonim.api.data.UserModel
 import apiteam.allpoisonim.features.main.MainActivity
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_signin.*
 import java.util.regex.Pattern
 
@@ -31,12 +34,16 @@ class SignInActivity : AppCompatActivity(), TextWatcher {
                     "password" to pw
             )
             if (isEmailValid(email)) {
-                HttpRequest.create().signIn(map).subscribe({
-                    startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+                HttpRequest.create().signIn(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({
+                    if(it.statusCode == 200) {
+                        UserModel.user = it
+                        startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+                        finish()
+                    }
                 }, {
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                     it.printStackTrace()
-                }).dispose()
+                })
             }else{
                 Toast.makeText(this@SignInActivity,getString(R.string.error_signin_id_valid),Toast.LENGTH_SHORT).show()
             }

@@ -3,9 +3,11 @@ package apiteam.allpoisonim.features.main
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import apiteam.allpoisonim.R
 import apiteam.allpoisonim.features.books.BooksFragment
 import apiteam.allpoisonim.features.mypage.MyPageFragment
+import apiteam.allpoisonim.api.data.UserModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +20,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initUi() {
         val fragments = listOf(HomeFragment(), BooksFragment(), MyPageFragment())
+
+        Log.e("ee", UserModel.get()?.data?.email)
 
         vp_main.adapter = MainPagerAdapter(fragments, supportFragmentManager)
         vp_main.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {

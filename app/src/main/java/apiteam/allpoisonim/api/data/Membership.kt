@@ -1,9 +1,12 @@
 package apiteam.allpoisonim.api.data
 
+import com.google.gson.annotations.SerializedName
+
 object Membership {
     data class Sign(
             val statusCode : Int,
             val message : String?,
+            @SerializedName("data")
             val data: User,
             val totalCount: Int
     )

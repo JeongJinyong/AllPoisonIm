@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import apiteam.allpoisonim.R
+import apiteam.allpoisonim.features.sign.SignInActivity
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -29,7 +30,7 @@ class SplashActivity : AppCompatActivity() {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, SignInActivity::class.java)
                     startActivity(intent)
                 })
     }

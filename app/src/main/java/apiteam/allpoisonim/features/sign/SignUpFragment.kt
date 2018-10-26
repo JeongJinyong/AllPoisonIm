@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import apiteam.allpoisonim.R
 import apiteam.allpoisonim.api.HttpRequest
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_signup.*
 
 
@@ -31,12 +33,14 @@ class SignUpFragment : Fragment(), TextWatcher {
                     "password" to pw,
                     "nickname" to nick
             )
-            HttpRequest.create().signUp(map).subscribe({
-                if (activity is SignUpActivity) (activity as SignUpActivity).signUpComplete()
+            HttpRequest.create().signUp(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({
+                if(it.statusCode == 200) {
+                    if (activity is SignUpActivity) (activity as SignUpActivity).signUpComplete()
+                }
             }, {
                 Toast.makeText(activity, it.message, Toast.LENGTH_SHORT).show()
                 it.printStackTrace()
-            }).dispose()
+            })
         }
     }
 

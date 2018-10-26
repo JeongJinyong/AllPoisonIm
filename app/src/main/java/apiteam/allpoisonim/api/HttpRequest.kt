@@ -53,10 +53,10 @@ interface HttpRequest {
 
 
     @POST("/user/sign-up")
-    fun signUp(@FieldMap map: Map<String, String>): Single<Membership.Sign>
+    fun signUp(@Body map: Map<String, String>): Single<Membership.Sign>
 
     @POST("/user/sign-in")
-    fun signIn(@FieldMap map: Map<String, String>): Single<Membership.Sign>
+    fun signIn(@Body map: Map<String, String>): Single<Membership.Sign>
 
     @GET("/book-store/{id}")
     fun bookStore(@Path("od") id: String): Single<BookStore.Data>
