@@ -1,7 +1,7 @@
 package apiteam.allpoisonim.api
 
 import apiteam.allpoisonim.api.data.BookStore
-import apiteam.allpoisonim.api.data.User
+import apiteam.allpoisonim.api.data.Membership
 import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -24,11 +24,11 @@ interface HttpRequest {
 
     @POST("/user/sign-up")
     @FormUrlEncoded
-    fun signUp(@FieldMap map: Map<String, String>): Single<User.Sign>
+    fun signUp(@FieldMap map: Map<String, String>): Single<Membership.Sign>
 
     @POST("/user/sign-in")
     @FormUrlEncoded
-    fun signIn(@FieldMap map: Map<String, String>): Single<User.Sign>
+    fun signIn(@FieldMap map: Map<String, String>): Single<Membership.Sign>
 
     @GET("/book-store/{id}")
     fun bookStore(@Path("od") id: String): Single<BookStore.Data>
