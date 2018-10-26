@@ -31,6 +31,7 @@ class SplashActivity : AppCompatActivity() {
                 .subscribe {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
+                    finish()
                 })
     }
 }
