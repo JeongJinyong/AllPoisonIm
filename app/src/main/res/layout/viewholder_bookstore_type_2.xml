@@ -33,7 +33,7 @@
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/iv_content"
         android:layout_width="0dp"
-        android:layout_height="248dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="15dp"
         android:adjustViewBounds="true"

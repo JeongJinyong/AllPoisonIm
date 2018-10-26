@@ -3,15 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/bookstore_type4_txt"
+        android:id="@+id/tv_content"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="36dp"
+        android:fontFamily="@font/noto_regular"
         android:textColor="@color/black_1c1c1c"
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -20,15 +22,16 @@
         tools:text="한 번 들으면 잊히지 않을 이름, 어서어서.\n어디에나 서점이 있지만,\n어디에도 없는 서점을 만들고 싶다는 의미가 담겨 있다." />
 
     <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/bookstore_type4_img"
+        android:id="@+id/iv_content"
         android:layout_width="0dp"
-        android:layout_height="212dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
+        android:adjustViewBounds="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bookstore_type4_txt"
+        app:layout_constraintTop_toBottomOf="@id/tv_content"
         tools:src="@drawable/test1" />
 
 </android.support.constraint.ConstraintLayout>
