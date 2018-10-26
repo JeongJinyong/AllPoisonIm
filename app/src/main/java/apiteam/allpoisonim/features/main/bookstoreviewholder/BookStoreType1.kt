@@ -13,9 +13,9 @@ class BookStoreType1(val view: View) : RecyclerView.ViewHolder(view) {
     private val ivMark = view.bookstore_name_img
     private val tvVol = view.bookstore_vol_txt
 
-    fun bind(store: BookStore.Data) {
+    fun bind(store: BookStore.BookStoreImages) {
         tvVol.text = String.format("vol. %s", store.id)
-        Picasso.get().load(store.storeMainImage).into(ivMark, object : Callback {
+        Picasso.get().load(store.image_url).into(ivMark, object : Callback {
             override fun onSuccess() {
             }
 

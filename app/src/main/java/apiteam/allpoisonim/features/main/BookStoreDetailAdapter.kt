@@ -56,7 +56,13 @@ class BookStoreDetailAdapter(val context: Context, var store: BookStore.Data) : 
             0 -> OVERVIEW
             1 -> FIRST_CONTENT
             store.bookStoreImages.size + 2 -> LAST_CONTENT
-            else -> position - 2 % 3
+            else -> {
+                if (position <= 3) {
+                    position - 2 % 3
+                } else {
+                    (position - 2) / 3
+                }
+            }
         }
     }
 
@@ -67,10 +73,28 @@ class BookStoreDetailAdapter(val context: Context, var store: BookStore.Data) : 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is BookStoreType0 -> holder.bind(store)
-            is BookStoreType1 -> holder.bind(store)
-            is BookStoreType2 -> holder.bind(store.bookStoreImages[position - 2 % 3])
-            is BookStoreType3 -> holder.bind(store.bookStoreImages[position - 2 % 3])
-            is BookStoreType4 -> holder.bind(store.bookStoreImages[position - 2 % 3])
+            is BookStoreType1 -> holder.bind(store.bookStoreImages[0])
+            is BookStoreType2 -> {
+                if (position - 1 < store.bookStoreImages.size - 1) {
+                    holder.bind(store.bookStoreImages[position - 1])
+                } else {
+                    holder.bind(store.bookStoreImages[position - 2])
+                }
+            }
+            is BookStoreType3 -> {
+                if (position - 1 < store.bookStoreImages.size - 1) {
+                    holder.bind(store.bookStoreImages[position - 1])
+                } else {
+                    holder.bind(store.bookStoreImages[position - 2])
+                }
+            }
+            is BookStoreType4 -> {
+                if (position - 1 < store.bookStoreImages.size - 1) {
+                    holder.bind(store.bookStoreImages[position - 1])
+                } else {
+                    holder.bind(store.bookStoreImages[position - 2])
+                }
+            }
             is BookStoreType5 -> holder.bind(store)
         }
     }
