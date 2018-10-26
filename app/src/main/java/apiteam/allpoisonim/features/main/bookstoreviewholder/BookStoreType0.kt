@@ -1,35 +1,53 @@
 package apiteam.allpoisonim.features.main.bookstoreviewholder
 
-import android.annotation.SuppressLint
 import android.support.v7.widget.RecyclerView
 import android.text.Html
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import apiteam.allpoisonim.CommonUtil
 import apiteam.allpoisonim.R
 import apiteam.allpoisonim.api.data.BookStore
-import com.bumptech.glide.Glide
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.viewholder_bookstore_type_0.*
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.viewholder_bookstore_type_0.view.*
+import java.lang.Exception
 
-class BookStoreType0(val parent: ViewGroup) : RecyclerView.ViewHolder
-(LayoutInflater.from(parent.context).inflate(R.layout.viewholder_bookstore_type_0, parent, false)), LayoutContainer {
+class BookStoreType0(val view: View) : RecyclerView.ViewHolder(view) {
+    private val ivMain = view.bookstore_main_img
+    private val tvTheme = view.bookstore_theme_txt
+    private val tvTitle = view.bookstore_title_txt
+    private val tvAddress = view.bookstore_map_txt
+    private val tvOperatingTime = view.bookstore_time_txt
+    private val tvPhone = view.bookstore_phone_txt
+    private val tvInsta = view.bookstore_insta_txt
+    private val tvCreatedAt = view.bookstore_createtime_txt
+    private val tvEditor = view.bookstore_editor_txt
+    private val ivEditor = view.bookstore_profile_img
 
-    override val containerView: View = parent
+    fun bind(store: BookStore.Data) {
+        Picasso.get().load(store.storeMainImage).into(ivMain, object: Callback{
+            override fun onSuccess() {
+            }
 
-    val context = parent.context!!
+            override fun onError(e: Exception?) {
+                ivMain.setImageResource(R.drawable.test1)
+            }
+        })
+        tvTheme.text = store.storeTheme
+        tvTitle.text = store.storeTitle
+        tvAddress.text = Html.fromHtml("<u>${store.storeName}</u/><br>\n${store.storeLocation}")
+        tvOperatingTime.text = store.openTime + if (store.weekendOpenTime.isNotEmpty()) "\n주말 : ${store.weekendOpenTime}" else ""
+        tvPhone.text = store.storePhoneNum
+        tvInsta.text = store.storeSns
+        tvCreatedAt.text = CommonUtil.beforeTime(store.createdAt)
+        Picasso.get().load(store.user.nickname).into(ivEditor, object : Callback {
+            override fun onSuccess() {
+            }
 
-    @SuppressLint("SetTextI18n")
-    private fun onBindViewHolder(bookstore: BookStore.Data) {
-        Glide.with(context).load(bookstore.storeMainImage).into(bookstore_main_img)
-        bookstore_theme_txt.text = bookstore.storeTheme
-        bookstore_title_txt.text = bookstore.storeTitle
-        bookstore_map_txt.text = Html.fromHtml("<u>${bookstore.storeName}</u/>\n${bookstore.storeLocation}")
-        bookstore_time_txt.text = bookstore.openTime + if (bookstore.weekendOpenTime.isNotEmpty()) "\n주말 : ${bookstore.weekendOpenTime}" else ""
-        bookstore_phone_txt.text = bookstore.storePhoneNum
-        bookstore_insta_txt.text = bookstore.storeSns
-        bookstore_createtime_txt.text = CommonUtil.beforeTime(bookstore.createdAt)
+            override fun onError(e: Exception?) {
+                ivEditor.setImageResource(R.drawable.iv_profile_default)
+            }
+        })
+        tvEditor.text = String.format("에디터 %s", store.user.nickname)
+
     }
-
 }

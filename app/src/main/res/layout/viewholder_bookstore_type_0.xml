@@ -30,13 +30,16 @@
 
     </android.support.constraint.ConstraintLayout>
 
-    <android.support.v7.widget.AppCompatButton
+    <ToggleButton
         android:id="@+id/bookstore_favorites_btn"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/btn_favorites"
+        android:background="@drawable/selector_btn_favorites"
+        android:text=""
+        android:textOff=""
+        android:textOn=""
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,6 +56,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="13.3dp"
+        android:fontFamily="@font/noto_medium"
         android:textColor="#ffffff"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@id/bookstore_main_img"
@@ -68,6 +72,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/notoserif_semibold"
         android:letterSpacing="-0.03"
         android:textColor="#ffffff"
         android:textSize="24sp"
@@ -91,6 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:fontFamily="@font/noto_regular"
         android:textColor="#ffffff"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@id/bookstore_profile_img"
@@ -104,6 +110,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="16dp"
+        android:alpha="0.4"
+        android:fontFamily="@font/noto_regular"
         android:textColor="#ffffff"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@id/bookstore_profile_img"
@@ -111,7 +119,7 @@
         app:layout_constraintLeft_toRightOf="@id/bookstore_editor_txt"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/bookstore_profile_img"
-        tools:text="1h aog" />
+        tools:text="1h ago" />
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/bookstore_map_img"
@@ -159,6 +167,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginEnd="16dp"
+        android:includeFontPadding="false"
         android:textColor="#c3c3c3"
         android:textSize="12sp"
         app:layout_constraintHorizontal_bias="0"
@@ -173,6 +182,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginEnd="16dp"
+        android:includeFontPadding="false"
         android:textColor="#c3c3c3"
         android:textSize="12sp"
         app:layout_constraintHorizontal_bias="0"
@@ -187,6 +197,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginEnd="16dp"
+        android:includeFontPadding="false"
         android:textColor="#c3c3c3"
         android:textSize="12sp"
         app:layout_constraintHorizontal_bias="0"
@@ -201,6 +212,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginEnd="16dp"
+        android:includeFontPadding="false"
         android:textColor="#c3c3c3"
         android:textSize="12sp"
         app:layout_constraintHorizontal_bias="0"

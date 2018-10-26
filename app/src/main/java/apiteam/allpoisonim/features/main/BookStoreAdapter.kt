@@ -30,7 +30,7 @@ class BookStoreAdapter(val context: Context, var storeList: List<BookStore.Data>
             holder.bind(storeList[position])
         }
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, BookStoreActivity::class.java)
+            val intent = Intent(context, BookStoreDetailActivity::class.java)
             intent.putExtra("ARG_STORE_ID", storeList[position].id)
             context.startActivity(intent)
         }
@@ -69,7 +69,7 @@ class BookStoreAdapter(val context: Context, var storeList: List<BookStore.Data>
                     ivProfile.setImageResource(R.drawable.iv_profile_default)
                 }
             })
-            tvEditor.text = store.user.nickname
+            tvEditor.text = String.format("에디터 %s", store.user.nickname)
             tvCreatedAt.text = CommonUtil.beforeTime(store.createdAt)
         }
     }

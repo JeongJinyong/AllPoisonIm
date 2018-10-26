@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/bookstore_name_img"
         tools:src="@drawable/test1"
+        android:adjustViewBounds="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bookstore_vol_txt"

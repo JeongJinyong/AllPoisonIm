@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@id/iv_profile" />
 
     <LinearLayout
-        android:id="@+id/ll_bookd_info"
+        android:id="@+id/ll_book_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -225,6 +225,6 @@
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:background="@color/grey_c3c3c3"
-        app:layout_constraintTop_toBottomOf="@id/ll_bookd_info" />
+        app:layout_constraintTop_toBottomOf="@id/ll_book_info" />
 
 </android.support.constraint.ConstraintLayout>
