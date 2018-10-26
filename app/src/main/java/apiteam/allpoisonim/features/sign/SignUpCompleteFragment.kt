@@ -14,6 +14,6 @@ class SignUpCompleteFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         signup_complete_login_btn.setOnClickListener { activity?.finish() }
-        signup_complete_detail_text.text = getString(R.string.signup_complete_detail)
+        signup_complete_detail_text.text = getString(R.string.signup_complete_detail,(activity as SignUpActivity).nick)
     }
 }

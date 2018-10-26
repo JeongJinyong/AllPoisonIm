@@ -34,8 +34,10 @@ class SignUpFragment : Fragment(), TextWatcher {
                     "nickname" to nick
             )
             HttpRequest.create().signUp(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({
-                if(it.statusCode == 200) {
-                    if (activity is SignUpActivity) (activity as SignUpActivity).signUpComplete()
+                if(it.body()?.statusCode == 200) {
+                    if (activity is SignUpActivity) (activity as SignUpActivity).signUpComplete(nick)
+                }else{
+                    Toast.makeText(activity, it.body()?.message, Toast.LENGTH_SHORT).show()
                 }
             }, {
                 Toast.makeText(activity, it.message, Toast.LENGTH_SHORT).show()

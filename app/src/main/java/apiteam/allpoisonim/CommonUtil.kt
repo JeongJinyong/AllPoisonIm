@@ -1,11 +1,14 @@
 package apiteam.allpoisonim
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class CommonUtil {
+open class CommonUtil {
 
     companion object {
         @SuppressLint("SimpleDateFormat")
@@ -37,4 +40,34 @@ class CommonUtil {
             return ret
         }
     }
+
+    private val TOKEN = "token"
+    private val USER = "user"
+    private lateinit var preferences: SharedPreferences
+
+    fun initPreferences(context: Context) {
+        preferences = PreferenceManager.getDefaultSharedPreferences(context)
+    }
+
+    inline fun SharedPreferences.editMe(operation: (SharedPreferences.Editor) -> Unit) {
+        val editMe = edit()
+        operation(editMe)
+        editMe.apply()
+    }
+
+    var token
+        get() = preferences.getString(TOKEN,"")
+        set(value) {
+            preferences.editMe {
+                it.putString(TOKEN, value)
+            }
+        }
+
+    var user
+        get() = preferences.getString(USER,"")
+        set(value) {
+            preferences.editMe {
+                it.putString(USER, value)
+            }
+        }
 }

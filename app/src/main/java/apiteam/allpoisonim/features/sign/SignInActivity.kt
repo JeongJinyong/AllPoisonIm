@@ -1,16 +1,20 @@
 package apiteam.allpoisonim.features.sign
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
+import apiteam.allpoisonim.CommonUtil
 
 import apiteam.allpoisonim.R
 import apiteam.allpoisonim.api.HttpRequest
+import apiteam.allpoisonim.api.data.Membership
 import apiteam.allpoisonim.api.data.UserModel
 import apiteam.allpoisonim.features.main.MainActivity
+import com.google.gson.Gson
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_signin.*
@@ -21,6 +25,12 @@ class SignInActivity : AppCompatActivity(), TextWatcher {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin)
+        val commonUtil = CommonUtil()
+        commonUtil.initPreferences(this)
+        if(commonUtil.token.isNotEmpty() and commonUtil.user.isNotEmpty()){
+            startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+            finish()
+        }
         signin_edit_email.addTextChangedListener(this)
         signin_edit_pw.addTextChangedListener(this)
         signin_info_text.setOnClickListener {
@@ -34,13 +44,23 @@ class SignInActivity : AppCompatActivity(), TextWatcher {
                     "password" to pw
             )
             if (isEmailValid(email)) {
+                val progressDialog = ProgressDialog(this)
+                progressDialog.setMessage("로딩중입니다.")
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)
+                progressDialog.show()
                 HttpRequest.create().signIn(map).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({
-                    if(it.statusCode == 200) {
-                        UserModel.user = it
+                    if(it.body()?.statusCode == 200) {
+                        UserModel.user = it.body()
+                        commonUtil.token = it.headers().get("Authorization")
+                        commonUtil.user = Gson().toJson(it.body())
+                        progressDialog.dismiss()
                         startActivity(Intent(this@SignInActivity, MainActivity::class.java))
                         finish()
+                    }else{
+                        Toast.makeText(this, it.body()?.message, Toast.LENGTH_SHORT).show()
                     }
                 }, {
+                    progressDialog.dismiss()
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                     it.printStackTrace()
                 })

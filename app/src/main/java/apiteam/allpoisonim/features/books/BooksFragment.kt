@@ -11,9 +11,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ToggleButton
+import apiteam.allpoisonim.CommonUtil
 import apiteam.allpoisonim.R
 import apiteam.allpoisonim.api.BookStoreService
 import apiteam.allpoisonim.api.TOKEN
+import apiteam.allpoisonim.api.data.Membership
+import com.google.gson.Gson
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -24,6 +27,7 @@ import kotlinx.android.synthetic.main.fragment_books.*
 class BooksFragment : Fragment() {
     private val compositeDisposable = CompositeDisposable()
     private lateinit var toggleList: List<ToggleButton>
+    private lateinit var user: Membership.Sign
     private val typeListener = View.OnClickListener { view ->
         for (toggleButton in toggleList) {
             clearToggle(toggleButton)
@@ -50,9 +54,14 @@ class BooksFragment : Fragment() {
     }
 
     private fun initData() {
+        val commonUtil = CommonUtil()
+        commonUtil.initPreferences(activity!!)
+        user = Gson().fromJson(commonUtil.user, Membership.Sign::class.java)
     }
 
     private fun initUi() {
+
+        tv_add_book.text = getString(R.string.recommend_book_title,user.data.nickname)
         btn_add_book.setOnClickListener {
             val option =
                     ActivityOptions.makeCustomAnimation(context,

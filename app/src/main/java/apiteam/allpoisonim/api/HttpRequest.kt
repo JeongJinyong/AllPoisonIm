@@ -1,5 +1,6 @@
 package apiteam.allpoisonim.api
 
+import apiteam.allpoisonim.api.data.BookDetail
 import apiteam.allpoisonim.api.data.BookStore
 import apiteam.allpoisonim.api.data.Membership
 import io.reactivex.Single
@@ -53,11 +54,20 @@ interface HttpRequest {
 
 
     @POST("/user/sign-up")
-    fun signUp(@Body map: Map<String, String>): Single<Membership.Sign>
+    fun signUp(@Body map: Map<String, String>): Single<retrofit2.Response<Membership.Sign>>
 
     @POST("/user/sign-in")
-    fun signIn(@Body map: Map<String, String>): Single<Membership.Sign>
+    fun signIn(@Body map: Map<String, String>): Single<retrofit2.Response<Membership.Sign>>
 
     @GET("/book-store/{id}")
     fun bookStore(@Path("od") id: String): Single<BookStore.Data>
+
+    @GET("/book/{bookId}")
+    fun book(@Header("Authorization") token: String, @Path("bookId") id:String): Single<retrofit2.Response<BookDetail.Book>>
+
+    @POST("/bookLike/save")
+    fun bookLike(@Header("Authorization") token: String, @Body map: Map<String, String>) : Single<retrofit2.Response<BookDetail.BookLike>>
+
+    @POST("/book-comment/save")
+    fun bookComment(@Header("Authorization") token: String, @Body map: Map<String, String>) : Single<retrofit2.Response<Membership.Sign>>
 }

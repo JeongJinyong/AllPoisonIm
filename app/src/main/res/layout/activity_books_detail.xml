@@ -13,6 +13,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
+        android:id="@+id/btn_back"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginStart="19dp"
