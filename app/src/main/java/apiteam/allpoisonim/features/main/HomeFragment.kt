@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import apiteam.allpoisonim.R
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
@@ -16,5 +17,16 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initUi()
+    }
 
+    private fun initUi() {
+        context?.let {
+            val storeAdapter = BookStoreAdapter(it, listOf(1, 2, 3, 4))
+            rv_store.adapter = storeAdapter
+        }
+
+    }
 }
