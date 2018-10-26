@@ -56,7 +56,7 @@ class BookStoreDetailAdapter(val context: Context, var store: BookStore.Data) : 
             0 -> OVERVIEW
             1 -> FIRST_CONTENT
             store.bookStoreImages.size + 2 -> LAST_CONTENT
-            else -> position % 3
+            else -> position - 2 % 3
         }
     }
 
@@ -68,9 +68,9 @@ class BookStoreDetailAdapter(val context: Context, var store: BookStore.Data) : 
         when (holder) {
             is BookStoreType0 -> holder.bind(store)
             is BookStoreType1 -> holder.bind(store)
-            is BookStoreType2 -> holder.bind(store.bookStoreImages[position % 3])
-            is BookStoreType3 -> holder.bind(store.bookStoreImages[position % 3])
-            is BookStoreType4 -> holder.bind(store.bookStoreImages[position % 3])
+            is BookStoreType2 -> holder.bind(store.bookStoreImages[position - 2 % 3])
+            is BookStoreType3 -> holder.bind(store.bookStoreImages[position - 2 % 3])
+            is BookStoreType4 -> holder.bind(store.bookStoreImages[position - 2 % 3])
             is BookStoreType5 -> holder.bind(store)
         }
     }
