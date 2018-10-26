@@ -6,16 +6,23 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.res.ResourcesCompat
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ToggleButton
 import apiteam.allpoisonim.R
+import apiteam.allpoisonim.api.BookStoreService
+import apiteam.allpoisonim.api.TOKEN
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 
 import kotlinx.android.synthetic.main.fragment_books.*
 
 class BooksFragment : Fragment() {
-
+    private val compositeDisposable = CompositeDisposable()
     private lateinit var toggleList: List<ToggleButton>
     private val typeListener = View.OnClickListener { view ->
         for (toggleButton in toggleList) {
@@ -33,7 +40,16 @@ class BooksFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initData()
         initUi()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        compositeDisposable.clear()
+    }
+
+    private fun initData() {
     }
 
     private fun initUi() {
