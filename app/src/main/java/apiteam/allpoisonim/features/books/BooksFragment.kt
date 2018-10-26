@@ -13,10 +13,12 @@ import android.view.ViewGroup
 import android.widget.ToggleButton
 import apiteam.allpoisonim.CommonUtil
 import apiteam.allpoisonim.R
+import apiteam.allpoisonim.api.BookService
 import apiteam.allpoisonim.api.BookStoreService
 import apiteam.allpoisonim.api.TOKEN
 import apiteam.allpoisonim.api.data.Membership
 import com.google.gson.Gson
+import apiteam.allpoisonim.api.data.Book
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -57,6 +59,10 @@ class BooksFragment : Fragment() {
         val commonUtil = CommonUtil()
         commonUtil.initPreferences(activity!!)
         user = Gson().fromJson(commonUtil.user, Membership.Sign::class.java)
+        compositeDisposable.add(BookService.getAllBooks(TOKEN)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { setRecyclerViewData(it) })
     }
 
     private fun initUi() {
@@ -78,16 +84,17 @@ class BooksFragment : Fragment() {
                 btn_type_miss, btn_type_need_laugh, btn_type_no_text,
                 btn_type_not_emotional, btn_type_want_trip, btn_type_whitout_thinking)
 
+        btn_type_all.isChecked = true
         for (toggleButton in toggleList) {
             toggleButton.setOnClickListener(typeListener)
         }
+    }
 
-        val temp = listOf(1, 2, 3, 4, 5)
+    private fun setRecyclerViewData(bookList: List<Book.Data>) {
         context?.let {
-            val booksAdapter = BooksAdapter(it, temp)
+            val booksAdapter = BooksAdapter(it, bookList)
             rv_book.adapter = booksAdapter
         }
-
     }
 
     private fun clearToggle(button: ToggleButton) {

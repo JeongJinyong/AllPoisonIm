@@ -48,6 +48,7 @@ object ApiFactory {
 
         requestBuilder.removeHeader("Content-Type")
         requestBuilder.header("Content-Type", "application/json")
+        requestBuilder.header("Accept", "application/json")
 
         return chain.proceed(requestBuilder.build())
     }
