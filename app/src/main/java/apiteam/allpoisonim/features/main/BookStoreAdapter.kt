@@ -41,7 +41,7 @@ class BookStoreAdapter(val context: Context, var storeList: List<BookStore.Data>
         private val tvTheme = v.tv_theme
         private val tvTitle = v.tv_title
         private val tvStoreName = v.tv_store_name
-        private val tvAddress = v.tv_store_name
+        private val tvAddress = v.tv_address
         private val ivProfile = v.iv_profile
         private val tvEditor = v.tv_editor_name
         private val tvCreatedAt = v.tv_created_at
