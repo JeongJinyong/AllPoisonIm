@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
     <android.support.v7.widget.AppCompatImageView
         android:layout_width="168dp"
@@ -14,7 +15,7 @@
         app:layout_constraintTop_toBottomOf="@id/bookstore_map"
         app:srcCompat="@drawable/bookstroe_bg_book" />
 
-    <View
+    <ImageView
         android:id="@+id/bookstore_map"
         android:layout_width="296dp"
         android:layout_height="196dp"
@@ -40,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginEnd="16dp"
+        android:includeFontPadding="false"
         android:textColor="#c3c3c3"
         android:textSize="12sp"
         app:layout_constraintHorizontal_bias="0"
