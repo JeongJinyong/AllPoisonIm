@@ -20,10 +20,6 @@ class BookStoreType5(val parent: ViewGroup, val bookstore: BookStore.Data) : Rec
         }
     }
 
-    init {
-        onBindViewHolder()
-    }
-
     override val containerView: View = parent
 
     val context = parent.context!!
