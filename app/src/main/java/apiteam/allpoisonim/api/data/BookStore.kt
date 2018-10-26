@@ -12,8 +12,11 @@ object BookStore {
         val storeLocation: String,
         val storePhoneNum: String,
         val storeSns: String,
+        val bookStoreImages: List<BookStoreImages>,
+        val user: Membership.User,
         val createdAt: String,
-        val bookStoreImages: List<BookStoreImages>
+        val updatedAt: String,
+        val show: Boolean
     )
 
     data class BookStoreImages(

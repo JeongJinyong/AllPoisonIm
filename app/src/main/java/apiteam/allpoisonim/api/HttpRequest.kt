@@ -1,7 +1,7 @@
 package apiteam.allpoisonim.api
 
 import apiteam.allpoisonim.api.data.BookStore
-import apiteam.allpoisonim.api.data.User
+import apiteam.allpoisonim.api.data.Membership
 import io.reactivex.Single
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -51,11 +51,12 @@ interface HttpRequest {
         }
     }
 
+
     @POST("/user/sign-up")
-    fun signUp(@Body map: Map<String, String>): Single<User.Sign>
+    fun signUp(@FieldMap map: Map<String, String>): Single<Membership.Sign>
 
     @POST("/user/sign-in")
-    fun signIn(@Body map: Map<String, String>): Single<User.Sign>
+    fun signIn(@FieldMap map: Map<String, String>): Single<Membership.Sign>
 
     @GET("/book-store/{id}")
     fun bookStore(@Path("od") id: String): Single<BookStore.Data>
