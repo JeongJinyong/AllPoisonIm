@@ -6,10 +6,20 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import apiteam.allpoisonim.CommonUtil
 import apiteam.allpoisonim.R
+import apiteam.allpoisonim.api.BookService
+import apiteam.allpoisonim.api.TOKEN
+import apiteam.allpoisonim.api.data.Book
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.viewholder_book.view.*
+import java.lang.Exception
 
-class BooksAdapter(val context: Context, var bookList: List<Int>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class BooksAdapter(val context: Context, var bookList: List<Book.Data>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.viewholder_book, parent, false)
         view.setOnClickListener {
@@ -40,16 +50,70 @@ class BooksAdapter(val context: Context, var bookList: List<Int>) : RecyclerView
         private val tvBookInfo = v.tv_book_info
         private val tvPublishedAt = v.tv_book_info2
         private val btnScrap = v.btn_scrap
-        private val btnReply = v.btn_reply
+        private val tvScrap = v.tv_recommend
+        private val tvReply = v.tv_reply
+        private val ivRecommend = v.iv_recommend
+        private val tvRecommendDesc = v.tv_recommend_desc
 
-        fun bind(number: Int) {
+        fun bind(book: Book.Data) {
             // 프로필 사진 로딩
+            Picasso.get().load(book.user.email).into(ivProfile, object : Callback {
+                override fun onSuccess() {
+                }
+
+                override fun onError(e: Exception?) {
+                    ivProfile.setImageResource(R.drawable.iv_profile_default)
+                }
+            })
+
             // 사용자 이름 설정
+            tvName.text = book.user.nickname
             // 만든 시간 ~초전 설정
+            tvCreatedAt.text = CommonUtil.beforeTime(book.createdAt)
             // 탐라 내용 설정
+            tvDesc.text = book.contents
             // 책 썸네일, 이름, 책정보 설정
-            // 추천 버튼 설정
-            // 댓글 버튼 설정
+            Picasso.get().load(book.book.bookImgUri).into(ivThumbnail, object : Callback {
+                override fun onSuccess() {
+                }
+
+                override fun onError(e: Exception?) {
+                    ivThumbnail.setImageResource(R.drawable.iv_book_example)
+                }
+            })
+
+            tvBookName.text = book.book.bookName
+            tvBookInfo.text = String.format("%s 저 | %s 이음", book.book.bookAuthor, book.book.bookPublisher)
+            tvPublishedAt.text = book.book.publishAt
+
+            tvScrap.text = book.book.likeCount.toString()
+            checkLikeButton(book.book.isLike)
+            tvReply.text = book.book.replyCount.toString()
+
+            btnScrap.setOnClickListener {
+                val data = mapOf(
+                        "bookId" to book.id
+                )
+                BookService.likes(TOKEN, data)
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe {
+                            checkLikeButton(!book.book.isLike)
+                        }
+
+            }
+        }
+
+        private fun checkLikeButton(check: Boolean) {
+            if(check) {
+                tvScrap.setTextColor(itemView.context.getColor(R.color.blue))
+                ivRecommend.setImageResource(R.drawable.ic_scrap_on)
+                tvRecommendDesc.setTextColor(itemView.context.getColor(R.color.blue))
+            } else {
+                tvScrap.setTextColor(itemView.context.getColor(R.color.grey_909090))
+                ivRecommend.setImageResource(R.drawable.ic_scrap)
+                tvRecommendDesc.setTextColor(itemView.context.getColor(R.color.grey_909090))
+            }
         }
     }
 }
