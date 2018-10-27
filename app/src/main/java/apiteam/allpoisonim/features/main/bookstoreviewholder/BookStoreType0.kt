@@ -1,5 +1,6 @@
 package apiteam.allpoisonim.features.main.bookstoreviewholder
 
+import android.app.Activity
 import android.support.v7.widget.RecyclerView
 import android.text.Html
 import android.view.View
@@ -22,6 +23,7 @@ class BookStoreType0(val view: View) : RecyclerView.ViewHolder(view) {
     private val tvCreatedAt = view.bookstore_createtime_txt
     private val tvEditor = view.bookstore_editor_txt
     private val ivEditor = view.bookstore_profile_img
+    private val btnBack = view.btn_back
 
     fun bind(store: BookStore.Data) {
         Picasso.get().load(store.storeMainImage).into(ivMain, object: Callback{
@@ -48,6 +50,6 @@ class BookStoreType0(val view: View) : RecyclerView.ViewHolder(view) {
             }
         })
         tvEditor.text = String.format("에디터 %s", store.user.nickname)
-
+        btnBack.setOnClickListener { (view.context as Activity).finish() }
     }
 }

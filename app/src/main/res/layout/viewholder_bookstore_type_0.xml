@@ -30,6 +30,16 @@
 
     </android.support.constraint.ConstraintLayout>
 
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/ic_back_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bookstore_favorites_btn" />
+
     <ToggleButton
         android:id="@+id/bookstore_favorites_btn"
         android:layout_width="40dp"
