@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.res.ResourcesCompat
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,12 +13,10 @@ import android.widget.ToggleButton
 import apiteam.allpoisonim.CommonUtil
 import apiteam.allpoisonim.R
 import apiteam.allpoisonim.api.BookService
-import apiteam.allpoisonim.api.BookStoreService
 import apiteam.allpoisonim.api.TOKEN
 import apiteam.allpoisonim.api.data.Membership
 import com.google.gson.Gson
 import apiteam.allpoisonim.api.data.Book
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -37,7 +34,13 @@ class BooksFragment : Fragment() {
         if (view is ToggleButton) {
             setToggle(view)
         }
+
+        if (view is ToggleButton) {
+            setFilter(view)
+        }
+
     }
+    private lateinit var bookList: List<Book.Data>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -63,12 +66,15 @@ class BooksFragment : Fragment() {
         compositeDisposable.add(BookService.getAllBooks(TOKEN)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { setRecyclerViewData(it) })
+                .subscribe {
+                    bookList = it
+                    setRecyclerViewData(it)
+                })
     }
 
     private fun initUi() {
 
-        tv_add_book.text = getString(R.string.recommend_book_title,user.data.nickname)
+        tv_add_book.text = getString(R.string.recommend_book_title, user.data.nickname)
         btn_add_book.setOnClickListener {
             val option =
                     ActivityOptions.makeCustomAnimation(context,
@@ -85,9 +91,24 @@ class BooksFragment : Fragment() {
                 btn_type_miss, btn_type_need_laugh, btn_type_no_text,
                 btn_type_not_emotional, btn_type_want_trip, btn_type_whitout_thinking)
 
-        btn_type_all.isChecked = true
+        setToggle(btn_type_all)
         for (toggleButton in toggleList) {
             toggleButton.setOnClickListener(typeListener)
+        }
+    }
+
+    private fun setFilter(toggleButton: ToggleButton) {
+        val filterList = ArrayList<Book.Data>()
+
+        if (toggleButton == btn_type_all) {
+            setRecyclerViewData(bookList)
+        } else {
+            for (book in bookList) {
+                if (book.category.categoryName == toggleButton.text) {
+                    filterList.add(book)
+                }
+            }
+            setRecyclerViewData(filterList)
         }
     }
 
