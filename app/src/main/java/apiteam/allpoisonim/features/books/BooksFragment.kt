@@ -59,6 +59,7 @@ class BooksFragment : Fragment() {
         val commonUtil = CommonUtil()
         commonUtil.initPreferences(activity!!)
         user = Gson().fromJson(commonUtil.user, Membership.Sign::class.java)
+
         compositeDisposable.add(BookService.getAllBooks(TOKEN)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
