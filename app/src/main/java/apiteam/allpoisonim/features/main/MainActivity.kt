@@ -1,5 +1,7 @@
 package apiteam.allpoisonim.features.main
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
@@ -10,6 +12,9 @@ import apiteam.allpoisonim.features.books.BooksFragment
 import apiteam.allpoisonim.features.mypage.MyPageFragment
 import apiteam.allpoisonim.api.data.UserModel
 import kotlinx.android.synthetic.main.activity_main.*
+import android.content.DialogInterface
+import apiteam.allpoisonim.CommonUtil
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,4 +55,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("종료하시겠습니까?")
+                .setPositiveButton("종료") { dialog, id ->
+                    dialog.dismiss()
+                    finish()
+                }
+                .setNegativeButton("로그아웃") { dialog, id ->
+                    val commonUtil = CommonUtil()
+                    commonUtil.initPreferences(this)// User cancelled the dialog
+                    commonUtil.token = ""
+                    commonUtil.user = ""
+                    dialog.dismiss()
+                    finish()
+                }
+        builder.create().show()
+    }
 }
