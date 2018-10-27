@@ -24,10 +24,7 @@ import java.lang.Exception
 class BooksAdapter(val context: Context, var bookList: List<Book.Data>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.viewholder_book, parent, false)
-        view.setOnClickListener {
-            val intent = Intent(context, BooksDetailActivity::class.java)
-            context.startActivity(intent)
-        }
+
         return BookViewHolder(view)
     }
 
@@ -38,6 +35,11 @@ class BooksAdapter(val context: Context, var bookList: List<Book.Data>) : Recycl
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is BookViewHolder) {
             holder.bind(bookList[position])
+        }
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, BooksDetailActivity::class.java)
+            intent.putExtra("id", bookList[position].id.toString())
+            context.startActivity(intent)
         }
     }
 
