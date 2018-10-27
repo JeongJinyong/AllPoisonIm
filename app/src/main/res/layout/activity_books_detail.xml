@@ -211,11 +211,13 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/iv_reco"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_scrap" />
 
                 <TextView
+                    android:id="@+id/tv_recommend_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_medium"

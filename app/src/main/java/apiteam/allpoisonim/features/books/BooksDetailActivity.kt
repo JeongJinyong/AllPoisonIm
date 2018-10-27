@@ -41,6 +41,7 @@ class BooksDetailActivity : AppCompatActivity() {
             HttpRequest.create().bookLike(token, mapOf("bookId" to id)).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({ booklike ->
                 if (booklike.body()?.statusCode == 200) {
                     tv_recommend.text = booklike.body()?.data?.likeCount.toString()
+                    checkLikeButton(booklike.body()?.data?.like)
                 } else {
                     Toast.makeText(this, booklike.body()?.message, Toast.LENGTH_SHORT).show()
                 }
@@ -60,6 +61,7 @@ class BooksDetailActivity : AppCompatActivity() {
         tv_book_name.text = book.bookName
         tv_book_info.text = book.bookAuthor
         tv_book_info2.text = book.bookBrief
+        checkLikeButton(book.like)
         tv_recommend.text = book.likeCount.toString()
         tv_reply.text = book.replyCount.toString()
         tv_category.text = book.category.categoryName
@@ -83,6 +85,20 @@ class BooksDetailActivity : AppCompatActivity() {
                 Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                 it.printStackTrace()
             })
+        }
+    }
+
+    private fun checkLikeButton(check: Boolean?) {
+        check?.let {
+            if (it) {
+                tv_recommend.setTextColor(getColor(R.color.blue))
+                iv_reco.setImageResource(R.drawable.ic_scrap_on)
+                tv_recommend_desc.setTextColor(getColor(R.color.blue))
+            } else {
+                tv_recommend.setTextColor(getColor(R.color.grey_909090))
+                iv_reco.setImageResource(R.drawable.ic_scrap)
+                tv_recommend_desc.setTextColor(getColor(R.color.grey_909090))
+            }
         }
     }
 
