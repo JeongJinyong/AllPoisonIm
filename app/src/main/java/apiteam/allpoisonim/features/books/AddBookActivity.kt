@@ -81,8 +81,8 @@ class AddBookActivity : AppCompatActivity() {
 
         btn_close.setOnClickListener { finish() }
 
-//        iv_book.setOnClickListener { showCameraPopup() }
-//        btn_add_photo.setOnClickListener { showCameraPopup() }
+        iv_book.setOnClickListener { showCameraPopup() }
+        btn_add_photo.setOnClickListener { showCameraPopup() }
     }
 
     private fun clearToggle(button: ToggleButton) {
