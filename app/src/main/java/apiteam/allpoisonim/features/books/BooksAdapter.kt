@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import apiteam.allpoisonim.CommonUtil
 import apiteam.allpoisonim.R
 import apiteam.allpoisonim.api.BookService
+import apiteam.allpoisonim.api.HttpRequest
 import apiteam.allpoisonim.api.TOKEN
 import apiteam.allpoisonim.api.data.Book
+import apiteam.allpoisonim.api.data.BookDetail
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import io.reactivex.Scheduler
@@ -91,28 +93,29 @@ class BooksAdapter(val context: Context, var bookList: List<Book.Data>) : Recycl
             tvReply.text = book.book.replyCount.toString()
 
             btnScrap.setOnClickListener {
-                val data = mapOf(
-                        "bookId" to book.id
-                )
-                BookService.likes(TOKEN, data)
-                        .subscribeOn(Schedulers.newThread())
+                HttpRequest.create().bookLike(TOKEN, mapOf("bookId" to book.id.toString()))
+                        .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe {
-                            checkLikeButton(!book.book.isLike)
+                        .subscribe { booklike ->
+                            checkLikeButton(booklike.body()?.data?.like)
+                            booklike.body()?.data?.likeCount.let { likeCount ->
+                                tvScrap.text = likeCount.toString()
+                            }
                         }
-
             }
         }
 
-        private fun checkLikeButton(check: Boolean) {
-            if(check) {
-                tvScrap.setTextColor(itemView.context.getColor(R.color.blue))
-                ivRecommend.setImageResource(R.drawable.ic_scrap_on)
-                tvRecommendDesc.setTextColor(itemView.context.getColor(R.color.blue))
-            } else {
-                tvScrap.setTextColor(itemView.context.getColor(R.color.grey_909090))
-                ivRecommend.setImageResource(R.drawable.ic_scrap)
-                tvRecommendDesc.setTextColor(itemView.context.getColor(R.color.grey_909090))
+        private fun checkLikeButton(check: Boolean?) {
+            check?.let {
+                if (it) {
+                    tvScrap.setTextColor(itemView.context.getColor(R.color.blue))
+                    ivRecommend.setImageResource(R.drawable.ic_scrap_on)
+                    tvRecommendDesc.setTextColor(itemView.context.getColor(R.color.blue))
+                } else {
+                    tvScrap.setTextColor(itemView.context.getColor(R.color.grey_909090))
+                    ivRecommend.setImageResource(R.drawable.ic_scrap)
+                    tvRecommendDesc.setTextColor(itemView.context.getColor(R.color.grey_909090))
+                }
             }
         }
     }
